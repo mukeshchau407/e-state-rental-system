@@ -316,7 +316,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">State</label>
 												<div class="col-lg-9">
-													<input type="text" class="form-control" name="state" required
+													<input type="text" class="form-control" name="state"
 														value="<?php echo $row['16']; ?>">
 												</div>
 											</div>
@@ -325,7 +325,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Total Floor</label>
 												<div class="col-lg-9">
-													<select class="form-control" required name="totalfl">
+													<select class="form-control" name="totalfl">
 														<option value="">Select Floor</option>
 														<option value="1 Floor">1 Floor</option>
 														<option value="2 Floor">2 Floor</option>
@@ -348,14 +348,14 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Area Size</label>
 												<div class="col-lg-9">
-													<input type="text" class="form-control" name="asize" required
+													<input type="text" class="form-control" name="asize"
 														value="<?php echo $row['12']; ?>">
 												</div>
 											</div>
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Address</label>
 												<div class="col-lg-9">
-													<input type="text" class="form-control" name="loc" required
+													<input type="text" class="form-control" name="loc"
 														value="<?php echo $row['14']; ?>">
 												</div>
 											</div>
@@ -372,9 +372,9 @@ if (isset($_POST['add'])) {
 
 											<textarea class="tinymce form-control" name="feature" rows="10" cols="30">
 
-															<?php echo $row['17']; ?>
+																	<?php echo $row['17']; ?>
 												
-													</textarea>
+															</textarea>
 										</div>
 									</div>
 
@@ -386,7 +386,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Image</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage" type="file" required="">
+													<input class="form-control" name="aimage" type="file">
 													<img src="admin/property/<?php echo $row['18']; ?>" alt="pimage"
 														height="150" width="180">
 												</div>
@@ -394,7 +394,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Image 2</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage2" type="file" required="">
+													<input class="form-control" name="aimage2" type="file">
 													<img src="admin/property/<?php echo $row['20']; ?>" alt="pimage"
 														height="150" width="180">
 												</div>
@@ -402,7 +402,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Image 4</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage4" type="file" required="">
+													<input class="form-control" name="aimage4" type="file">
 													<img src="admin/property/<?php echo $row['22']; ?>" alt="pimage"
 														height="150" width="180">
 												</div>
@@ -431,7 +431,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">Image 1</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage1" type="file" required="">
+													<input class="form-control" name="aimage1" type="file">
 													<img src="admin/property/<?php echo $row['19']; ?>" alt="pimage"
 														height="150" width="180">
 												</div>
@@ -439,7 +439,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">image 3</label>
 												<div class="col-lg-9">
-													<input class="form-control" name="aimage3" type="file" required="">
+													<input class="form-control" name="aimage3" type="file">
 													<img src="admin/property/<?php echo $row['21']; ?>" alt="pimage"
 														height="150" width="180">
 												</div>
