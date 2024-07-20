@@ -75,21 +75,21 @@ if (isset($_REQUEST['login'])) {
 -->
 
 	<?php
-	// require_once 'vendor/autoload.php';
-	
+	require_once 'vendor/autoload.php';
+
 	// init configuration
 	$clientID = '127421054762-i6v3ciq5r1uaiuo97anupgklcn27u70j.apps.googleusercontent.com';
 	$clientSecret = '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';
-	$redirectUri = 'http://localhost/project/welthome/login.php';
+	$redirectUri = 'http://localhost/project/welthome/';
 
 	// create Client Request to access Google API
-	// $client = new Google_Client();
-	// $client->setClientId($clientID);
-	// $client->setClientSecret($clientSecret);
-	// $client->setRedirectUri($redirectUri);
-	// $client->addScope("email");
-	// $client->addScope("profile");
-	
+	$client = new Google_Client();
+	$client->setClientId($clientID);
+	$client->setClientSecret($clientSecret);
+	$client->setRedirectUri($redirectUri);
+	$client->addScope("email");
+	$client->addScope("profile");
+
 	// authenticate code from Google OAuth Flow
 	if (isset($_GET['code'])) {
 		$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
@@ -123,22 +123,22 @@ if (isset($_REQUEST['login'])) {
 
 				<!--	Banner   --->
 			<!-- <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Login</b></h2>
-					</div>
-					<div class="col-md-6">
-						<nav aria-label="breadcrumb" class="float-left float-md-right">
-							<ol class="breadcrumb bg-transparent m-0 p-0">
-								<li class="breadcrumb-item text-white"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Login</li>
-							</ol>
-						</nav>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h2 class="page-name float-left text-white text-uppercase mt-1 mb-0"><b>Login</b></h2>
+						</div>
+						<div class="col-md-6">
+							<nav aria-label="breadcrumb" class="float-left float-md-right">
+								<ol class="breadcrumb bg-transparent m-0 p-0">
+									<li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+									<li class="breadcrumb-item active">Login</li>
+								</ol>
+							</nav>
+						</div>
 					</div>
 				</div>
-			</div>
-		</div> -->
+			</div> -->
 				<!--	Banner   --->
 
 
@@ -183,11 +183,10 @@ if (isset($_REQUEST['login'])) {
 										<!-- Social Login -->
 										<div class="social-login d-flex justify-content-around px-5">
 											<!-- <span>Login with</span> -->
-											<a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+											<a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
 											<a href="<?php echo $client->createAuthUrl() ?>" class="google"><i
 													class="fab fa-google"></i></a>
 											<a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
-											<!-- <a href="#" class="google"><i class="fab fa-instagram"></i></a> -->
 										</div>
 										<!-- /Social Login -->
 

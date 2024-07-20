@@ -169,7 +169,7 @@ if (isset($_REQUEST['reg'])) {
 											<input class="form-control" name="uimage" type="file">
 										</div>
 
-										<button class="btn btn-success" name="reg" value="Register"
+										<button class="btn btn-success form-control" name="reg" value="Register"
 											type="submit">Register</button>
 
 									</form>
