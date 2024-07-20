@@ -206,8 +206,8 @@ if (!isset($_SESSION['auser'])) {
 											<td><?php echo $row['5']; ?></td>
 											<td><a href="admindelete.php?id=<?php echo $row['0']; ?>"><button
 														class="btn btn-danger">Delete</button></a>
-												<a href="adminupdate.php?id=<?php echo $row['0']; ?>"><button
-														class="btn btn-primary">Update</button></a>
+												<!-- <a href="adminupdate.php?id=<?php echo $row['0']; ?>">
+													<button class="btn btn-primary">Update</button></a> -->
 											</td>
 										</tr>
 										<?php
