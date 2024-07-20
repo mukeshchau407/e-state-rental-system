@@ -75,21 +75,21 @@ if (isset($_REQUEST['login'])) {
 -->
 
 	<?php
-	require_once 'vendor/autoload.php';
-
+	// require_once 'vendor/autoload.php';
+	
 	// init configuration
 	$clientID = '127421054762-i6v3ciq5r1uaiuo97anupgklcn27u70j.apps.googleusercontent.com';
 	$clientSecret = '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';
 	$redirectUri = 'http://localhost/project/welthome/login.php';
 
 	// create Client Request to access Google API
-	$client = new Google_Client();
-	$client->setClientId($clientID);
-	$client->setClientSecret($clientSecret);
-	$client->setRedirectUri($redirectUri);
-	$client->addScope("email");
-	$client->addScope("profile");
-
+	// $client = new Google_Client();
+	// $client->setClientId($clientID);
+	// $client->setClientSecret($clientSecret);
+	// $client->setRedirectUri($redirectUri);
+	// $client->addScope("email");
+	// $client->addScope("profile");
+	
 	// authenticate code from Google OAuth Flow
 	if (isset($_GET['code'])) {
 		$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);

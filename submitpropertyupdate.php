@@ -309,7 +309,7 @@ if (isset($_POST['add'])) {
 											<div class="form-group row">
 												<label class="col-lg-3 col-form-label">City</label>
 												<div class="col-lg-9">
-													<input type="text" class="form-control" name="city" required
+													<input type="text" class="form-control" name="city"
 														value="<?php echo $row['15']; ?>">
 												</div>
 											</div>
@@ -372,9 +372,9 @@ if (isset($_POST['add'])) {
 
 											<textarea class="tinymce form-control" name="feature" rows="10" cols="30">
 
-																	<?php echo $row['17']; ?>
+																		<?php echo $row['17']; ?>
 												
-															</textarea>
+																</textarea>
 										</div>
 									</div>
 

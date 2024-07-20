@@ -73,10 +73,10 @@ if (isset($_REQUEST['calc'])) {
             <?php include ("include/header.php"); ?>
             <!--	Header end  -->
 
-            <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
+            <!-- <li class="breadcrumb-item text-white"><a href="#">Home</a></li>
             <li class="breadcrumb-item active">User Listed Property</li>
-            </ol>
-            </nav>
+            </ol> -->
+            <!-- </nav> -->
             <!--	Banner   --->
             <!-- <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
             <div class="container">

@@ -107,7 +107,6 @@ include("config.php");
                                     <div class="featured-thumb-data shadow-one">
                                         <div class="p-4">
                                             <h5 class="text-secondary hover-text-success mb-2 text-capitalize d-flex justify-content-between"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
-                                        </a>
                                                             <a href="propertydetail.php?pid=<?php echo $row['0']; ?>">
                                             <button class="btn btn-success rounded">Details</button>
                                         </a></h5>

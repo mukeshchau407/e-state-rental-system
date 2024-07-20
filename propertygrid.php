@@ -118,12 +118,16 @@ include("config.php");
                                     <div class="overlay-black overflow-hidden position-relative"> <img src="admin/property/<?php echo $row['18'];?>" alt="pimage">
                                         
                                         <div class="sale bg-success text-white">For <?php echo $row['5'];?></div>
-                                        <div class="price text-primary text-capitalize">$<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sqft</span></div>
+                                        <div class="price text-primary text-capitalize">NPR.<?php echo $row['13'];?> <span class="text-white"><?php echo $row['12'];?> Sq.ft.</span></div>
                                         
                                     </div>
                                     <div class="featured-thumb-data shadow-one">
                                         <div class="p-4">
-                                            <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a></h5>
+                                            <h5 class="text-secondary hover-text-success mb-2 text-capitalize d-flex justify-content-between"><a href="propertydetail.php?pid=<?php echo $row['0'];?>"><?php echo $row['1'];?></a>
+                                             <a href="propertydetail.php?pid=<?php echo $row['0']; ?>">
+                                                <button class="btn btn-success rounded">Details</button>
+                                             </a>
+                                        </h5>
                                             <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i> <?php echo $row['14'];?></span> </div>
                                         <div class="px-4 pb-4 d-inline-block w-100">
                                             <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By : <?php echo $row['uname'];?></div>
@@ -149,7 +153,7 @@ include("config.php");
 
                             
                             
-                        <!--    <div class="col-md-12">
+                           <div class="col-md-12">
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination justify-content-center mt-4">
                                         <li class="page-item disabled"> <span class="page-link">Previous</span> </li>
@@ -161,7 +165,7 @@ include("config.php");
                                         <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
                                     </ul>
                                 </nav>
-                            </div>  -->
+                            </div> 
                         </div>
                     </div>
                     <div class="col-lg-4">

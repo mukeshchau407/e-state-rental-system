@@ -436,7 +436,7 @@ include ("config.php");
                             <div class="col-md-6 col-lg-3 pb-1">
                                 <div
                                     class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9">
-                                    <img src="images/thumbnail4/1.jpg" alt="">
+                                    <img src="images/thumbnail4/img1.jpg" alt="">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
                                         $query = mysqli_query($con, "SELECT count(state), property.* FROM property where city='Olisphis'");
@@ -455,7 +455,7 @@ include ("config.php");
                             <div class="col-md-6 col-lg-3 pb-1">
                                 <div
                                     class="overflow-hidden position-relative overlay-secondary hover-zoomer mx-n13 z-index-9">
-                                    <img src="images/thumbnail4/2.jpg" alt="">
+                                    <img src="images/thumbnail4/2.jpg">
                                     <div class="text-white xy-center z-index-9 position-absolute text-center w-100">
                                         <?php
                                         $query = mysqli_query($con, "SELECT count(state), property.* FROM property where city='Awrerton'");
