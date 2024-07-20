@@ -60,12 +60,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="images/favicon.ico">
 
-    <!--	Fonts
+    <!--	Fonts -->
     ========================================================-->
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
-    <!--	Css Link
+    <!--	Css Link  -->
     ========================================================-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/login.css">
 
-    <title>Forgot Password</title>
+    <title>Welthome | forgot pass</title>
 
 </head>
 
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!--	Header start  -->
             <?php include ("include/header.php"); ?>
 
-            <div class="container mt-5">
+            <div class="container mt-5 mb-5">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="card">

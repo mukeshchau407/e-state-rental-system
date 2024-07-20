@@ -82,6 +82,7 @@ if (!isset($_SESSION['auser'])) {
 							if (isset($_GET['msg']))
 								echo $_GET['msg'];
 							?>
+
 							<table id="datatable-buttons" class="table table-striped dt-responsive nowrap">
 								<thead>
 									<tr>
@@ -112,20 +113,15 @@ if (!isset($_SESSION['auser'])) {
 										?>
 
 										<tr>
-											<!-- <td><?php echo $row['0']; ?></td> -->
+
 											<td><?php echo $row['1']; ?></td>
 											<td><?php echo $row['3']; ?></td>
 											<td><?php echo $row['4']; ?></td>
 											<td><?php echo $row['5']; ?></td>
-
 											<td><?php echo $row['12']; ?></td>
 											<td><?php echo $row['13']; ?></td>
 											<td><?php echo $row['14']; ?></td>
-
-
 											<td><?php echo $row['24']; ?></td>
-
-
 											<td><?php echo $row['29']; ?></td>
 											<td><a href="propertyedit.php?id=<?php echo $row['0']; ?>"><button
 														class="btn btn-info">Edit</button></a>

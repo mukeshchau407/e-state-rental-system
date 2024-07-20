@@ -95,13 +95,14 @@ include ("config.php");
                             </div>
                         </div>
                         <div class="row about-company">
-                            <div class="col-md-12 col-lg-7">
+                            <div class="col-md-12 col-lg-7 mt-4">
                                 <div class="about-content">
                                     <?php echo $row['2']; ?>
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-5 mt-5">
-                                <div class="about-img"> <img src="admin/upload/<?php echo $row['3']; ?>" alt="about image">
+                            <div class="col-md-12 col-lg-5 mt-0">
+                                <div class="about-img"> <img src="admin/upload/<?php echo $row['3']; ?>" height="500"
+                                        width="400" alt="about image">
                                 </div>
                             </div>
                         </div>
