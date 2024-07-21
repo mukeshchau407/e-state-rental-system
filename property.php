@@ -19,7 +19,7 @@ include("config.php");
 <meta name="keywords" content="">
 <meta name="author" content="Unicoder">
 <link rel="shortcut icon" href="images/favicon.ico">
-
+    
 <!--	Fonts
 	========================================================-->
 <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">

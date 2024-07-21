@@ -149,7 +149,7 @@ if (!isset($_SESSION['uemail'])) {
                                         <div class="d-flex justify-content-between">
                                             <h5 class="mt-2 text-secondary text-capitalize"><?php echo $row['1']; ?>
                                             </h5>
-                                            <a class="text-white btn btn-success rounded" href="#contact_agent">Book Now</a>
+                                            <a class="text-white btn btn-success rounded" href="booknow.php">Book Now</a>
                                             </>
                                         </div>
                                         <span class="mb-sm-20 d-block text-capitalize"><i

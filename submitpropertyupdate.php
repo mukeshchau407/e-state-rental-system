@@ -210,7 +210,7 @@ if (isset($_POST['add'])) {
 														<option value="flat">Flat</option>
 														<option value="building">Building</option>
 														<option value="house">House</option>
-														<option value="villa">Villa</option>
+														<option value="room">Room</option>
 														<option value="office">Office</option>
 													</select>
 												</div>
@@ -372,9 +372,9 @@ if (isset($_POST['add'])) {
 
 											<textarea class="tinymce form-control" name="feature" rows="10" cols="30">
 
-																		<?php echo $row['17']; ?>
+																			<?php echo $row['17']; ?>
 												
-																</textarea>
+																	</textarea>
 										</div>
 									</div>
 

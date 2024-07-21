@@ -13,7 +13,7 @@ if (isset($_REQUEST['calc'])) {
 
     // $interest = ($amount * $int) / 100;
     $pay = $amount;
-    // $month = $pay / $mon;
+    $month = $pay / $mon;
 
 
 }
@@ -119,7 +119,7 @@ if (isset($_REQUEST['calc'])) {
                                 <tr class="text-center">
                                     <td><b>Total Duration</b></td>
                                     <td><b><?php echo $mon . ' Months'; ?></b></td>
-                                </tr><!-- FOR MORE PROJECTS visit: codeastro.com -->
+                                </tr>
                                 <!-- <tr class="text-center">
                                     <td><b>Interest Rate</b></td>
                                     <td><b><?php echo $int . '%'; ?></b></td>
@@ -137,15 +137,14 @@ if (isset($_REQUEST['calc'])) {
                                     <td><b><?php echo 'NPR.' . $month; ?></b></td>
                                 </tr> -->
 
-                                <tr class="text-center" border-collapse="1">
-                                    <td><button class="text-dark border-0">Pay with esewa</button></td>
-                                </tr>
+
 
                             </tbody>
 
 
                         </table>
 
+                        <input type="submit" class="" value="Pay with eSewa" />
                     </center>
                 </div>
             </div>

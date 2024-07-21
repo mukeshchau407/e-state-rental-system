@@ -183,10 +183,10 @@ if (isset($_REQUEST['login'])) {
 										<!-- Social Login -->
 										<div class="social-login d-flex justify-content-around px-5">
 											<!-- <span>Login with</span> -->
-											<a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+											<!-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a> -->
 											<a href="<?php echo $client->createAuthUrl() ?>" class="google"><i
 													class="fab fa-google"></i></a>
-											<a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+											<!-- <a href="#" class="twitter"><i class="fab fa-twitter"></i></a> -->
 										</div>
 										<!-- /Social Login -->
 
@@ -236,3 +236,36 @@ if (isset($_REQUEST['login'])) {
 </body>
 
 </html>
+
+
+<?php
+
+// Check if user exists
+$sql = "SELECT * FROM users WHERE google_id = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $userid);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+	// User exists, update their info
+	$sql = "UPDATE users SET email = ?, name = ?, picture = ? WHERE google_id = ?";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param("ssss", $email, $name, $picture, $userid);
+} else {
+	// User does not exist, insert a new record
+	$sql = "INSERT INTO users (google_id, email, name, picture) VALUES (?, ?, ?, ?)";
+	$stmt = $conn->prepare($sql);
+	$stmt->bind_param("ssss", $userid, $email, $name, $picture);
+}
+
+if ($stmt->execute()) {
+	echo "User data saved successfully";
+} else {
+	echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$stmt->close();
+$conn->close();
+
+?>

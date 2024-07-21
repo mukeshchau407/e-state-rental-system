@@ -200,7 +200,7 @@ if (isset($_POST['add'])) {
 													<option value="flat">Flat</option>
 													<option value="building">Building</option>
 													<option value="house">House</option>
-													<option value="villa">Room</option>
+													<option value="room">Room</option>
 													<option value="office">Office</option>
 												</select>
 											</div>

@@ -61,12 +61,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="shortcut icon" href="images/favicon.ico">
 
     <!--	Fonts -->
-    ========================================================-->
+    <!--========================================================-->
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,500,600,700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
 
     <!--	Css Link  -->
-    ========================================================-->
+    <!--========================================================-->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-slider.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
@@ -102,8 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <label for="email">Email address</label>
                                         <input type="email" class="form-control" id="email" name="uemail" required>
                                     </div>
-                                    <button type="submit" class="btn btn-primary btn-block">Send Password Reset
-                                        Link</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Send Password Reset</button>
                                 </form>
                             </div>
                         </div>
