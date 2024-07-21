@@ -25,6 +25,59 @@ if (isset($_REQUEST['login'])) {
 		$error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
 	}
 }
+
+// Google Login
+require_once 'vendor/autoload.php';
+
+// init configuration
+$clientID = '127421054762-i6v3ciq5r1uaiuo97anupgklcn27u70j.apps.googleusercontent.com';
+$clientSecret = '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';
+$redirectUri = 'http://localhost/project/welthome/';
+
+// create Client Request to access Google API
+$client = new Google_Client();
+$client->setClientId($clientID);
+$client->setClientSecret($clientSecret);
+$client->setRedirectUri($redirectUri);
+$client->addScope("email");
+$client->addScope("profile");
+
+// authenticate code from Google OAuth Flow
+if (isset($_GET['code'])) {
+	$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+	$client->setAccessToken($token['access_token']);
+
+	// get profile info
+	$google_oauth = new Google_Service_Oauth2($client);
+	$google_account_info = $google_oauth->userinfo->get();
+	$email = $google_account_info->email;
+	$name = $google_account_info->name;
+
+	// Check if user already exists in the database
+	$stmt = $con->prepare("SELECT * FROM google_user WHERE email=?");
+	$stmt->bind_param("s", $email);
+	$stmt->execute();
+	$result = $stmt->get_result();
+
+	if ($result->num_rows > 0) {
+		// User exists, log them in 	
+		$row = $result->fetch_assoc();
+		$_SESSION['id'] = $row['id'];
+		$_SESSION['email'] = $email;
+	} else {
+		// User does not exist, create a new user
+		$stmt = $con->prepare("INSERT INTO google_user (email, display_name) VALUES (?, ?)");
+		$stmt->bind_param("ss", $email, $name);
+		$stmt->execute();
+		$_SESSION['id'] = $con->insert_id;
+		$_SESSION['email'] = $email;
+	}
+
+	header("Location: index.php");
+	exit;
+}
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,54 +127,14 @@ if (isset($_REQUEST['login'])) {
 </div>
 -->
 
-	<?php
-	require_once 'vendor/autoload.php';
 
-	// init configuration
-	$clientID = '127421054762-i6v3ciq5r1uaiuo97anupgklcn27u70j.apps.googleusercontent.com';
-	$clientSecret = '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';
-	$redirectUri = 'http://localhost/project/welthome/';
+	<div id="page-wrapper">
+		<div class="row">
+			<!--	Header start  -->
+			<?php include ("include/header.php"); ?>
+			<!--	Header end  -->
 
-	// create Client Request to access Google API
-	$client = new Google_Client();
-	$client->setClientId($clientID);
-	$client->setClientSecret($clientSecret);
-	$client->setRedirectUri($redirectUri);
-	$client->addScope("email");
-	$client->addScope("profile");
-
-	// authenticate code from Google OAuth Flow
-	if (isset($_GET['code'])) {
-		$token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-		$client->setAccessToken($token['access_token']);
-
-		// get profile info
-		$google_oauth = new Google_Service_Oauth2($client);
-		$google_account_info = $google_oauth->userinfo->get();
-		$email = $google_account_info->email;
-		$name = $google_account_info->name;
-
-		?>
-		<div class="container">
-			<div class="box">
-				<div class="form-group">
-					<label for="email">Email <?php echo $email; ?></label>
-					<label for="name">Name <?php echo $name; ?></label>
-				</div>
-			</div>
-		</div>
-		<?php
-	} else {
-		?>
-
-
-		<div id="page-wrapper">
-			<div class="row">
-				<!--	Header start  -->
-				<?php include ("include/header.php"); ?>
-				<!--	Header end  -->
-
-				<!--	Banner   --->
+			<!--	Banner   --->
 			<!-- <div class="banner-full-row page-banner" style="background-image:url('images/breadcromb.jpg');">
 				<div class="container">
 					<div class="row">
@@ -139,7 +152,7 @@ if (isset($_REQUEST['login'])) {
 					</div>
 				</div>
 			</div> -->
-				<!--	Banner   --->
+			<!--	Banner   --->
 
 
 			<div class="page-wrappers login-body full-row bg-gray">
@@ -153,67 +166,70 @@ if (isset($_REQUEST['login'])) {
 									<?php echo $error; ?>
 									<?php echo $msg; ?>
 									<!-- Form -->
-										<form method="post">
-											<div class="form-group">
-												<input type="email" name="email" class="form-control"
-													placeholder="Your Email">
-											</div>
-											<div class="form-group">
-												<input type="password" name="pass" class="form-control"
-													placeholder="Your Password">
-											</div>
-											<div class="d-flex justify-content-between">
-												<div class="form-group">
-													<input type="checkbox"><span class=""> Remember me</span>
-												</div>
-												<div class="form-group">
-													<a href="forgotpass.php">Forgot Password?</a>
-												</div>
-											</div>
-
-											<button class="btn btn-success form-control" name="login" value="Login"
-												type="submit">Login</button>
-										</form>
-
-
-										<div class="login-or">
-											<span class="or-line"></span>
-											<span class="span-or">or</span>
+									<form method="post">
+										<div class="form-group">
+											<input type="email" name="email" class="form-control"
+												placeholder="Your Email">
 										</div>
-										<!-- Social Login -->
-										<div class="social-login d-flex justify-content-around px-5">
-											<!-- <span>Login with</span> -->
-											<!-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a> -->
-											<a href="<?php echo $client->createAuthUrl() ?>" class="google"><i
-													class="fab fa-google"></i></a>
-											<!-- <a href="#" class="twitter"><i class="fab fa-twitter"></i></a> -->
+										<div class="form-group">
+											<input type="password" name="pass" class="form-control"
+												placeholder="Your Password">
 										</div>
-										<!-- /Social Login -->
+										<div class="d-flex justify-content-between">
+											<div class="form-group">
+												<input type="checkbox"><span class=""> Remember me</span>
+											</div>
+											<div class="form-group">
+												<a href="forgotpass.php">Forgot Password?</a>
+											</div>
+										</div>
 
-										<div class="text-center dont-have">Don't have an account? <a
-												href="register.php">Register</a></div>
+										<button class="btn btn-success form-control" name="login" value="Login"
+											type="submit">Login</button>
+									</form>
 
+
+									<div class="login-or">
+										<span class="or-line"></span>
+										<span class="span-or">or</span>
 									</div>
+									<!-- Social Login -->
+									<div class=" d-flex justify-content-around">
+										<!-- <span>Login with</span> -->
+										<!-- <a href="#" class="facebook"><i class="fab fa-facebook"></i></a> -->
+										<a href="<?php echo $client->createAuthUrl() ?>"
+											class="btn text-danger font-weight-bold shadow-none"><i
+												class="fab fa-google"></i>
+											Login With
+											Google</a>
+										<!-- <a href="#" class="twitter"><i class="fab fa-twitter"></i></a> -->
+									</div>
+									<!-- /Social Login -->
+
+									<div class="text-center dont-have">Don't have an account? <a
+											href="register.php">Register</a>
+									</div>
+
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!--	login  -->
-
-
-				<!--	Footer   start-->
-				<?php include ("include/footer.php"); ?>
-				<!--	Footer   start-->
-
-				<!-- Scroll to top -->
-				<a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i
-						class="fas fa-angle-up"></i></a>
-				<!-- End Scroll To top -->
 			</div>
-		</div>
+			<!--	login  -->
 
-	<?php } ?>
+
+			<!--	Footer   start-->
+			<?php include ("include/footer.php"); ?>
+			<!--	Footer   start-->
+
+			<!-- Scroll to top -->
+			<a href="#" class="bg-secondary text-white hover-text-secondary" id="scroll"><i
+					class="fas fa-angle-up"></i></a>
+			<!-- End Scroll To top -->
+		</div>
+	</div>
+
 	<!-- Wrapper End -->
 
 	<!--	Js Link
@@ -236,36 +252,3 @@ if (isset($_REQUEST['login'])) {
 </body>
 
 </html>
-
-
-<?php
-
-// Check if user exists
-$sql = "SELECT * FROM users WHERE google_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $userid);
-$stmt->execute();
-$result = $stmt->get_result();
-
-if ($result->num_rows > 0) {
-	// User exists, update their info
-	$sql = "UPDATE users SET email = ?, name = ?, picture = ? WHERE google_id = ?";
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("ssss", $email, $name, $picture, $userid);
-} else {
-	// User does not exist, insert a new record
-	$sql = "INSERT INTO users (google_id, email, name, picture) VALUES (?, ?, ?, ?)";
-	$stmt = $conn->prepare($sql);
-	$stmt->bind_param("ssss", $userid, $email, $name, $picture);
-}
-
-if ($stmt->execute()) {
-	echo "User data saved successfully";
-} else {
-	echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$stmt->close();
-$conn->close();
-
-?>
